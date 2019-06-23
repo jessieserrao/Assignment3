@@ -11,6 +11,9 @@ public class Movie {
 	private String title;
 
 	public Movie(String title, int priceCode) {
+		Validator.validateTitle(title);
+		Validator.validatePriceCode(priceCode);
+
 		this.title = title;
 		this.setPriceCode(priceCode);
 	}
@@ -20,10 +23,12 @@ public class Movie {
 	}
 
 	public void setTitle(String title) {
+		Validator.validateTitle(title);
 		this.title = title;
 	}
 
 	double getCharge(int daysRented) {
+		Validator.validateDaysRented(daysRented);
 		return price.getCharge(daysRented);
 	}
 
@@ -32,6 +37,7 @@ public class Movie {
 	}
 
 	public void setPriceCode(int priceCode) {
+		Validator.validatePriceCode(priceCode);
 		switch (priceCode) {
 		case REGULAR:
 			price = new RegularPrice();
@@ -48,6 +54,9 @@ public class Movie {
 	}
 
 	public int getFrequentRenterPoints(int daysRented) {
+
+		Validator.validateDaysRented(daysRented);
+
 		return price.getFrequentRenterPoints(daysRented);
 	}
 

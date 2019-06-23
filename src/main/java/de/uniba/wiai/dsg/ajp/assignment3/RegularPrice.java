@@ -4,6 +4,9 @@ public class RegularPrice extends Price {
 
 	@Override
 	double getCharge(int daysRented) {
+
+		Validator.validateDaysRented(daysRented);
+
 		double result = 2;
 		if (daysRented > 2) {
 			result += (daysRented - 2) * 1.5;

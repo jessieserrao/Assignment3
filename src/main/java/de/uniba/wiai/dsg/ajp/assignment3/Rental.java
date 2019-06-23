@@ -10,6 +10,8 @@ public class Rental {
 	}
 
 	public void setMovie(Movie movie) {
+		Validator.validateMovie(movie);
+
 		this.movie = movie;
 	}
 
@@ -18,6 +20,8 @@ public class Rental {
 	}
 
 	public void setDaysRented(int daysRented) {
+		Validator.validateDaysRented(daysRented);
+
 		this.daysRented = daysRented;
 	}
 

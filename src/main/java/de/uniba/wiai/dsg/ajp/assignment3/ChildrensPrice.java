@@ -4,6 +4,9 @@ public class ChildrensPrice extends Price {
 
 	@Override
 	double getCharge(int daysRented) {
+
+		Validator.validateDaysRented(daysRented);
+
 		double result = 1.5;
 		if (daysRented > 3) {
 			result += (daysRented - 3) * 1.5;

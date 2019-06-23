@@ -24,16 +24,26 @@ public class Customer {
 	 * the name should include both names first and last name.
 	 * @param name;
 	 */
+
+
+
 	public Customer(String name) {
 		super();
-		this.name = name;
+
+		Validator.validateName(name);
+			this.name = name;
 	}
+
 
 	public String getName() {
 		return name;
 	}
 
 	public void setName(String name) {
+
+		Validator.validateName(name);
+			this.name = name;
+
 		this.name = name;
 	}
 
@@ -50,6 +60,7 @@ public class Customer {
 	 * @param rentals list of rentals movies
 	 */
 	public void setRentals(List<Rental> rentals) {
+		Validator.validateList(getRentals());
 		this.rentals = rentals;
 	}
 
