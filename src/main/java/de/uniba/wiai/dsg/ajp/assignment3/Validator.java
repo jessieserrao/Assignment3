@@ -8,20 +8,18 @@ import java.util.regex.Pattern;
 
 public class Validator {
 
-    private static final String ONE_OR_MORE = "+";
-    private static final String VALID_NAME = "[a-zA-Z0-9._%-]" + ONE_OR_MORE;
 
     public static  int validateDaysRented(int daysRented){
 
-        if(daysRented<=0){
-            throw new IllegalArgumentException("Please enter a number above 0");
+        if(daysRented<=0 || daysRented>30){
+            throw new IllegalArgumentException("Please enter a number above 0 and below 31");
         }
         return daysRented;
     }
 
     public static String validateName(String name) {
         Objects.requireNonNull(name, "Name must not be null");
-        if(!name.matches(VALID_NAME)){
+        if(!name.matches("(?i)[a-z]([- ',.a-z]{0,23}[a-z])?")){
             throw new IllegalArgumentException("Name cant contain special signs or numbers");
         } else return name;
     }
