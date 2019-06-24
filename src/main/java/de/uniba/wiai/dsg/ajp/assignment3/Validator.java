@@ -26,7 +26,7 @@ public class Validator {
 
     public static List validateList(List anyList){
         Objects.requireNonNull(anyList, "List must not be null");
-        if(anyList.size() ==0){
+        if(anyList.isEmpty()){
             throw new IllegalArgumentException("List is empty");
         } else return anyList;
 

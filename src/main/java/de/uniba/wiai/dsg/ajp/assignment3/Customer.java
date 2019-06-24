@@ -52,6 +52,7 @@ public class Customer {
 	 * @return this list
 	 */
 	public List<Rental> getRentals() {
+
 		return rentals;
 	}
 
