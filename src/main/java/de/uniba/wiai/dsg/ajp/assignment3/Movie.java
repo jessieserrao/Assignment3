@@ -2,15 +2,33 @@ package de.uniba.wiai.dsg.ajp.assignment3;
 
 public class Movie {
 
-	public static final int CHILDRENS = 2;
-	public static final int REGULAR = 0;
-	public static final int NEW_RELEASE = 1;
+	public enum PriceCode {
+		ADULT(3),
+		CHILDRENS(2),
+		NEW_RELEASE(1),
+		REGULAR(0);
 
+		private int value;
+
+		PriceCode(int valor) {
+			this.value = value;
+		}
+
+		public int getValue() {
+			return value;
+		}
+
+		public void setValor(int valor) {
+			this.value = valor;
+		}
+	}
+
+	private PriceCode pc;
 	private Price price;
 
 	private String title;
 
-	public Movie(String title, int priceCode) {
+	public Movie(String title, PriceCode priceCode) {
 		Validator.validateTitle(title);
 		Validator.validatePriceCode(priceCode);
 
@@ -36,10 +54,11 @@ public class Movie {
 		return price.getPriceCode();
 	}
 
-	public void setPriceCode(int priceCode) {
-		Validator.validatePriceCode(priceCode);
+	public void setPriceCode(PriceCode priceCode) {
+		//Validator.validatePriceCode(priceCode);
+
 		switch (priceCode) {
-		case REGULAR:
+			case REGULAR:
 			price = new RegularPrice();
 			break;
 		case CHILDRENS:
@@ -47,6 +66,9 @@ public class Movie {
 			break;
 		case NEW_RELEASE:
 			price = new NewReleasePrice();
+			break;
+			case ADULT:
+			price = new AdultPrice();
 			break;
 		default:
 			throw new IllegalArgumentException("Incorrect Price Code");
