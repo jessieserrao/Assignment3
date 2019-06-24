@@ -24,7 +24,7 @@ public class NewReleasePrice extends Price{
 
 	@Override
 	int getPriceCode() {
-		return Movie.NEW_RELEASE;
+		return Movie.PriceCode.NEW_RELEASE.getValue();
 	}
 	
 }

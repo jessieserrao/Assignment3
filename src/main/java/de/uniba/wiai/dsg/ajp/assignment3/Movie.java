@@ -2,62 +2,83 @@ package de.uniba.wiai.dsg.ajp.assignment3;
 
 public class Movie {
 
-	public static final int CHILDRENS = 2;
-	public static final int REGULAR = 0;
-	public static final int NEW_RELEASE = 1;
+    private PriceCode pc;
+    private Price price;
+    private String title;
 
-	private Price price;
+    public Movie(String title, PriceCode priceCode) {
+        Validator.validateTitle(title);
+        Validator.validatePriceCode(priceCode);
 
-	private String title;
+        this.title = title;
+        this.setPriceCode(priceCode);
+    }
 
-	public Movie(String title, int priceCode) {
-		Validator.validateTitle(title);
-		Validator.validatePriceCode(priceCode);
+    public String getTitle() {
+        return title;
+    }
 
-		this.title = title;
-		this.setPriceCode(priceCode);
-	}
+    public void setTitle(String title) {
+        Validator.validateTitle(title);
+        this.title = title;
+    }
 
-	public String getTitle() {
-		return title;
-	}
+    double getCharge(int daysRented) {
+        Validator.validateDaysRented(daysRented);
+        return price.getCharge(daysRented);
+    }
 
-	public void setTitle(String title) {
-		Validator.validateTitle(title);
-		this.title = title;
-	}
+    public int getPriceCode() {
+        return price.getPriceCode();
+    }
 
-	double getCharge(int daysRented) {
-		Validator.validateDaysRented(daysRented);
-		return price.getCharge(daysRented);
-	}
+    public void setPriceCode(PriceCode priceCode) {
+        Validator.validatePriceCode(priceCode);
 
-	public int getPriceCode() {
-		return price.getPriceCode();
-	}
+        switch (priceCode) {
+            case REGULAR:
+                price = new RegularPrice();
+                break;
+            case CHILDRENS:
+                price = new ChildrensPrice();
+                break;
+            case NEW_RELEASE:
+                price = new NewReleasePrice();
+                break;
+            case ADULT:
+                price = new AdultPrice();
+                break;
+            default:
+                throw new IllegalArgumentException("Incorrect Price Code");
+        }
+    }
 
-	public void setPriceCode(int priceCode) {
-		Validator.validatePriceCode(priceCode);
-		switch (priceCode) {
-		case REGULAR:
-			price = new RegularPrice();
-			break;
-		case CHILDRENS:
-			price = new ChildrensPrice();
-			break;
-		case NEW_RELEASE:
-			price = new NewReleasePrice();
-			break;
-		default:
-			throw new IllegalArgumentException("Incorrect Price Code");
-		}
-	}
+    public int getFrequentRenterPoints(int daysRented) {
 
-	public int getFrequentRenterPoints(int daysRented) {
+        Validator.validateDaysRented(daysRented);
 
-		Validator.validateDaysRented(daysRented);
+        return price.getFrequentRenterPoints(daysRented);
+    }
 
-		return price.getFrequentRenterPoints(daysRented);
-	}
+    public enum PriceCode {
+        ADULT(3),
+        CHILDRENS(2),
+        NEW_RELEASE(1),
+        REGULAR(0);
+
+        private int value;
+
+        PriceCode(int valor) {
+            this.value = value;
+        }
+
+        public int getValue() {
+            return value;
+        }
+
+        public void setValor(int valor) {
+            this.value = valor;
+        }
+    }
 
 }

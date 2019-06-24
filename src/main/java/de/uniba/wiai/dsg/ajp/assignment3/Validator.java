@@ -6,6 +6,8 @@ import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static de.uniba.wiai.dsg.ajp.assignment3.Movie.PriceCode.*;
+
 public class Validator {
 
 
@@ -31,9 +33,9 @@ public class Validator {
         } else return anyList;
 
     }
-    public static int validatePriceCode(int priceCode){
-        if(!(priceCode==0||priceCode==1||priceCode==2)){
-            throw new IllegalArgumentException("Pricecode can only be 0 or 1 or 2");
+    public static Movie.PriceCode validatePriceCode(Movie.PriceCode priceCode){
+        if(!(priceCode==ADULT||priceCode==REGULAR||priceCode==NEW_RELEASE ||priceCode==CHILDRENS) ){
+            throw new IllegalArgumentException("Pricecode can only be ADULT or REGULAR or NEW_RELEASE or CHILDRENS");
         } else return priceCode;
     }
     public static String validateTitle(String title){
@@ -45,7 +47,7 @@ public class Validator {
     }
     public static Movie validateMovie(Movie movie){
         validateTitle(movie.getTitle());
-        validatePriceCode(movie.getPriceCode());
+       // validatePriceCode(movie.getPriceCode());
         return movie;
     }
 
