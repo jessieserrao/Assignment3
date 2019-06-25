@@ -13,7 +13,7 @@ class CustomerTest {
 
     @Test
     void getName() {
-        Customer customer = new Customer("");
+        Customer customer = new Customer("Falk");
         customer.setName("Max M");
         assertEquals("Max M",customer.getName());
     }

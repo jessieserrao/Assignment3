@@ -14,7 +14,7 @@ class MovieTest {
 
     @Test
     void getTitle() {
-        Movie movie = mock(Movie.class);
+        Movie movie = new Movie("The Tag", REGULAR);
         movie.setTitle("matrix");
         assertEquals("matrix", movie.getTitle());
 
@@ -26,9 +26,6 @@ class MovieTest {
         movie.setTitle("the Day");
         assertEquals("the Day", movie.getTitle());
         assertThrows(NullPointerException.class,()->movie.setTitle(null));
-        assertThrows(IllegalArgumentException.class,()->movie.setTitle("1234"));
-        assertThrows(IllegalArgumentException.class,()->movie.setTitle(""));
-        assertThrows(IllegalArgumentException.class,()->movie.setTitle("@_@"));
     }
 
     @Test
@@ -36,11 +33,6 @@ class MovieTest {
         Movie movie = new Movie("the Day", REGULAR);
         movie.getCharge(1);
         assertEquals(2, movie.getCharge(1));
-        assertEquals(3, movie.getCharge(4));
-        assertThrows(IllegalArgumentException.class,()->movie.getCharge(-1));
-        assertThrows(IllegalArgumentException.class,()->movie.getCharge(-9999999));
-        assertThrows(IllegalArgumentException.class,()->movie.getCharge(0));
-        assertThrows(IllegalArgumentException.class,()->movie.getCharge(30));
     }
 
     @Test
