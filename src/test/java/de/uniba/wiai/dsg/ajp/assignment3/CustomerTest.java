@@ -99,6 +99,8 @@ class CustomerTest {
         mockCustomer.setRentals(rl);
 
         mockCustomer.statement(); */
+
+
     }
 
     @Test

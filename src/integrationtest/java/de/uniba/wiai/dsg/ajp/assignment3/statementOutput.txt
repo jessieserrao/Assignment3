@@ -1,0 +1,7 @@
+Rental Record for Test Testermann
+	TestAdultMovie	20.0
+	TestChildrenMovie	1.5
+	TestRegularMovie	9.5
+	TestNewMovie	69.0
+Amount owed is 100.0
+You earned 5 frequent renter points
