@@ -22,7 +22,7 @@ public class TotalCharge extends Price {
     @Override
     int getPriceCode() {
 
-        Validator.validategetPriceCode(getPriceCode());
+        //Validator.validategetPriceCode(getPriceCode());
 
         return getPriceCode();
     }

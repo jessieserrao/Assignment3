@@ -21,15 +21,12 @@ public class Voucher {
         int y = 30;
         int z = 50;
 
-        if (code.nextInt >=100 & code.nextInt <=999) {
-
-
-
+        //if (code.nextInt >=100 & code.nextInt <=999) {
 
 
             return 0;
 
 
-        }
+        //}
     }
 }
