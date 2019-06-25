@@ -61,13 +61,13 @@ public class Customer {
 	 * @param rentals list of rentals movies
 	 */
 	public void setRentals(List<Rental> rentals) {
-		Validator.validateList(getRentals());
+		Validator.validateList(rentals);
 		this.rentals = rentals;
 	}
 
 	/**
 	 * Search for the
-	 * @return
+	 * @return the List of Rentals of a Customer
 	 */
 	public String statement() {
 		String result = "Rental Record for " + getName() + "\n";

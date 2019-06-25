@@ -12,7 +12,7 @@ class CustomerTest {
 
     @Test
     void getName() {
-        Customer customer = mock(Customer.class);
+        Customer customer = new Customer("");
         customer.setName("Max Mus");
         assertEquals("Max Mus",customer.getName());
     }
@@ -29,29 +29,44 @@ class CustomerTest {
         assertThrows(IllegalArgumentException.class,()->customer.setName(""));
         assertThrows(IllegalArgumentException.class,()->customer.setName("@_@"));
 
+
     }
 
     @Test
     void getRentals() {
-        Customer customer = mock(Customer.class);
+
+        Customer customer = new Customer("Max Mus");
+
         ArrayList<Rental> rl = new ArrayList<Rental>();
+        Rental mockRental = mock(Rental.class);
+        rl.add(mockRental);
 
-        when(customer.getRentals()).thenReturn(rl);
-        assertEquals(rl,customer.getRentals());
-
-    }
-
-    @Test
-    void setRentals() {
-        Customer customer = mock(Customer.class);
-        ArrayList<Rental> rl = new ArrayList<Rental>();
         customer.setRentals(rl);
         assertEquals(rl,customer.getRentals());
 
     }
 
     @Test
+    void setRentals() {
+        Customer customer = new Customer("Max M");
+        ArrayList<Rental> rl = new ArrayList<Rental>();
+        Rental mockRental = mock(Rental.class);
+        rl.add(mockRental);
+
+        customer.setRentals(rl);
+        assertEquals(rl,customer.getRentals());
+
+        assertThrows(NullPointerException.class,()->customer.setRentals(null));
+
+        rl.clear();
+        assertThrows(IllegalArgumentException.class, ()->customer.setRentals(rl));
+    }
+
+    @Test
     void statement() {
+        Customer customer = new Customer("Max Mus");
+
+        System.out.println(customer.statement());
 
 
 
