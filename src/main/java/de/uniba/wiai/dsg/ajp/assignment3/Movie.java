@@ -1,6 +1,7 @@
 package de.uniba.wiai.dsg.ajp.assignment3;
-/*
-represent a movie that will be rented
+
+/**
+ * Represents the movie to be rented in the NedFligs
  */
 public class Movie {
     /**
@@ -102,7 +103,7 @@ public class Movie {
         PriceCode(int value) {
             this.value = value;
         }
-        
+
         public int getValue() {
             return this.value;
         }
