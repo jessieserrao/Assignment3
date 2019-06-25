@@ -1,11 +1,22 @@
 package de.uniba.wiai.dsg.ajp.assignment3;
-
+/*
+represent a movie that will be rented
+ */
 public class Movie {
-
-    private PriceCode pc;
+    /**
+     * the Price type
+     */
     private Price price;
+    /**
+     * title of the movie
+     */
     private String title;
 
+    /**
+     * the movie Object to be used, it has title and a Price Code
+     * @param title the title of the movie
+     * @param priceCode the price code that returns the movie value
+     */
     public Movie(String title, PriceCode priceCode) {
         Validator.validateTitle(title);
         Validator.validatePriceCode(priceCode);
@@ -23,15 +34,28 @@ public class Movie {
         this.title = title;
     }
 
+    /**
+     * get the charge of a movie
+     * @param daysRented the number of days that a movie will be rented for a customer
+     * @return the price for this charge
+     */
     double getCharge(int daysRented) {
         Validator.validateDaysRented(daysRented);
         return price.getCharge(daysRented);
     }
 
+    /**
+     * Gets the Price Code of a movie
+     * @return the number corrempodent of a the movie type
+     */
     public int getPriceCode() {
         return price.getPriceCode();
     }
 
+    /**
+     * Sets the Price code number of a movie type
+     * @param priceCode
+     */
     public void setPriceCode(PriceCode priceCode) {
         Validator.validatePriceCode(priceCode);
 
@@ -53,13 +77,20 @@ public class Movie {
         }
     }
 
+    /**
+     * Gets the the points from the Frequent Renter Points System
+     * @param daysRented give the number of days that a movie will be rented
+     * @return  the number of Frequent Renter Points
+     */
     public int getFrequentRenterPoints(int daysRented) {
 
         Validator.validateDaysRented(daysRented);
 
         return price.getFrequentRenterPoints(daysRented);
     }
-
+    /**
+     * the Enumeration that will be in the set Price Code, it determine the constants with the corespondent value
+     */
     public enum PriceCode {
         ADULT(3),
         CHILDRENS(2),
@@ -71,7 +102,7 @@ public class Movie {
         PriceCode(int value) {
             this.value = value;
         }
-
+        
         public int getValue() {
             return this.value;
         }
