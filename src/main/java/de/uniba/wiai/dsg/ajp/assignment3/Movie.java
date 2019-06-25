@@ -37,16 +37,16 @@ public class Movie {
 
         switch (priceCode) {
             case REGULAR:
-                price = new RegularPrice();
+                this.price = new RegularPrice();
                 break;
             case CHILDRENS:
-                price = new ChildrensPrice();
+                this.price = new ChildrensPrice();
                 break;
             case NEW_RELEASE:
-                price = new NewReleasePrice();
+                this.price = new NewReleasePrice();
                 break;
             case ADULT:
-                price = new AdultPrice();
+                this.price = new AdultPrice();
                 break;
             default:
                 throw new IllegalArgumentException("Incorrect Price Code");
@@ -68,16 +68,16 @@ public class Movie {
 
         private int value;
 
-        PriceCode(int valor) {
+        PriceCode(int value) {
             this.value = value;
         }
 
         public int getValue() {
-            return value;
+            return this.value;
         }
 
-        public void setValor(int valor) {
-            this.value = valor;
+        public void setValue(int value) {
+            this.value = value;
         }
     }
 

@@ -49,9 +49,9 @@ class MovieTest {
         Movie movie2 = new Movie("the Day", ADULT);
         Movie movie3 = new Movie("the Day", CHILDRENS);
         Movie movie4 = new Movie("the Day", NEW_RELEASE);
-        assertEquals(2, movie.getPriceCode());
-        assertEquals(5 ,movie2.getPriceCode());
-        assertEquals(1.5, movie3.getPriceCode());
+        assertEquals(0, movie.getPriceCode());
+        assertEquals(3 ,movie2.getPriceCode());
+        assertEquals(2, movie3.getPriceCode());
         assertEquals(1, movie4.getPriceCode());
     }
 

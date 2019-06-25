@@ -65,9 +65,9 @@ class CustomerTest {
 
     @Test
     void statement() {
-        Customer customer = new Customer("Max M");
+        Customer emptyCustomer = new Customer("Max M");
 
-        System.out.println(customer.statement());
+        System.out.println(emptyCustomer.statement());
 
         Customer customerWithRentals=new Customer("Max R");
         Rental rental = new Rental();
@@ -103,8 +103,8 @@ class CustomerTest {
 
     @Test
     void htmlStatement() {
-        Customer customer = new Customer("Max M");
-        System.out.println(customer.htmlStatement());
+        Customer emptyCustomer = new Customer("Max M");
+        System.out.println(emptyCustomer.htmlStatement());
 
         Customer customerWithRentals=new Customer("Max R");
         Rental rental = new Rental();
@@ -119,6 +119,7 @@ class CustomerTest {
         customerWithRentals.setRentals(rl);
 
         System.out.println(customerWithRentals.htmlStatement());
+
 
     }
 
