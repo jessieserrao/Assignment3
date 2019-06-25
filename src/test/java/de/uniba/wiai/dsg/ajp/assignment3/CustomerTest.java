@@ -5,6 +5,7 @@ import org.mockito.internal.matchers.Null;
 
 import java.util.ArrayList;
 
+import static de.uniba.wiai.dsg.ajp.assignment3.Movie.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -13,8 +14,8 @@ class CustomerTest {
     @Test
     void getName() {
         Customer customer = new Customer("");
-        customer.setName("Max Mus");
-        assertEquals("Max Mus",customer.getName());
+        customer.setName("Max M");
+        assertEquals("Max M",customer.getName());
     }
 
     @Test
@@ -35,7 +36,7 @@ class CustomerTest {
     @Test
     void getRentals() {
 
-        Customer customer = new Customer("Max Mus");
+        Customer customer = new Customer("Max M");
 
         ArrayList<Rental> rl = new ArrayList<Rental>();
         Rental mockRental = mock(Rental.class);
@@ -64,23 +65,62 @@ class CustomerTest {
 
     @Test
     void statement() {
-        Customer customer = new Customer("Max Mus");
+        Customer customer = new Customer("Max M");
 
         System.out.println(customer.statement());
 
+        Customer customerWithRentals=new Customer("Max R");
+        Rental rental = new Rental();
+        Movie movie = new Movie("MockTitle", PriceCode.ADULT);
+        rental.setMovie(movie);
+        rental.setDaysRented(5);
+        ArrayList<Rental> rl = new ArrayList<Rental>();
 
+        for(int i=0;i<10;i++){
+            rl.add(rental);
+        }
+        customerWithRentals.setRentals(rl);
 
+        System.out.println(customerWithRentals.statement());
+
+        /* with mock:
+        Customer mockCustomer = new Customer("Max Mock");
+        Rental mrental = mock(Rental.class);
+        Movie mmovie = mock(Movie.class);
+        mmovie.setTitle("Mock");
+        mmovie.setPriceCode(PriceCode.CHILDRENS);
+
+        mrental.setDaysRented(10);
+        mrental.setMovie(mmovie);
+
+        rl.clear();
+        rl.add(mrental);
+
+        mockCustomer.setRentals(rl);
+
+        mockCustomer.statement(); */
     }
 
     @Test
     void htmlStatement() {
+        Customer customer = new Customer("Max M");
+        System.out.println(customer.htmlStatement());
+
+        Customer customerWithRentals=new Customer("Max R");
+        Rental rental = new Rental();
+        Movie movie = new Movie("MockTitle", PriceCode.REGULAR);
+        rental.setMovie(movie);
+        rental.setDaysRented(5);
+        ArrayList<Rental> rl = new ArrayList<Rental>();
+
+        for(int i=0;i<10;i++){
+            rl.add(rental);
+        }
+        customerWithRentals.setRentals(rl);
+
+        System.out.println(customerWithRentals.htmlStatement());
+
     }
 
-    @Test
-    void getTotalCharge() {
-    }
 
-    @Test
-    void getTotalFrequentRenterPoints() {
-    }
 }
