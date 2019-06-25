@@ -1,15 +1,30 @@
 package de.uniba.wiai.dsg.ajp.assignment3;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static de.uniba.wiai.dsg.ajp.assignment3.Movie.PriceCode.REGULAR;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RentalTest {
-        RentalTest rentalTest = new RentalTest();
+      private  RentalTest rentalTest;
+    @BeforeEach
+    void setUp() {
+        this.rentalTest = new RentalTest();
+    }
+
+    @AfterEach
+    void tearDown() {
+        this.rentalTest=null;
+    }
+
     @Test
     void getMovie() {
-        Movie movie = new Movie("Matrix", REGULAR);
+        Rental rental = new Rental();
+        rental.getMovie();
+        assertEquals();
+
 
     }
 

@@ -1,5 +1,7 @@
 package de.uniba.wiai.dsg.ajp.assignment3;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static de.uniba.wiai.dsg.ajp.assignment3.Movie.PriceCode.REGULAR;
@@ -11,6 +13,16 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 class MovieTest {
+    private Movie movieTest;
+    @BeforeEach
+    void setUp() {
+        movieTest = new Movie("", REGULAR);
+    }
+
+    @AfterEach
+    void tearDown() {
+        movieTest=null;
+    }
 
     @Test
     void getTitle() {
